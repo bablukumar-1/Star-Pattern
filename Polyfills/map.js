@@ -1,6 +1,6 @@
 
 // this is my build map() method to use iterate and return new Array.
-
+// ------------------*******************---------------
 // const myArray =[2,3,4,5]
 // const myArray = [
 //     {
