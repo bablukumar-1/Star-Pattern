@@ -1,6 +1,6 @@
 
 // this is my build map() method to use iterate and return new Array.
-
+// ------------------*******************---------------
 // const myArray =[2,3,4,5]
 // const myArray = [
 //     {
@@ -26,7 +26,7 @@
 // })
 
 // console.log(newArray)
-
+// console.log(' all these for practice)
 
 // ----------------************************------------------
 // i have create own myMap() method polyfill is use to iterate and return new Array.
@@ -63,6 +63,6 @@ array.myMap((value, index, arr) => {
     console.log(`index no is ${index} and value ${value} and my array ${arr}`)
     // console.log(`index no is ${index} and value`, value.name, arr)
     return value
-    
+
 
 })
