@@ -26,7 +26,7 @@
 // })
 
 // console.log(newArray)
-
+// console.log(' all these for practice)
 
 // ----------------************************------------------
 // i have create own myMap() method polyfill is use to iterate and return new Array.
@@ -63,6 +63,6 @@ array.myMap((value, index, arr) => {
     console.log(`index no is ${index} and value ${value} and my array ${arr}`)
     // console.log(`index no is ${index} and value`, value.name, arr)
     return value
-    
+
 
 })
