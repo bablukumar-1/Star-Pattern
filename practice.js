@@ -1,18 +1,19 @@
-if (!Array.prototype.myFilter) {
-    Array.prototype.myFilter = function (callback) {
-        if (typeof callback !== 'function') {
-            throw new TypeError(callback + "is not a function.")
-        }
-        const result = []
-        for (let i = 0; i < this.length; i++) {
-            if (callback(this[i], i, this)) {
-                result.push(this[i])
-            }
-        }
-        return result;
+if (!Array.prototype.myPush) {
+  Array.prototype.myPush = function (...elements) {
+    // elements → all values you want to add
+    for (let i = 0; i < elements.length; i++) {
+      this[this.length] = elements[i];  // add element at the end
     }
+    return this.length; // return new length (like push does)
+  };
 }
+const arr = [2, 3, 4, 5];
+const arr1 = [6, 7, 8];
 
-const arr1 = [2, 3, 4, 5]
-const newArray = arr1.myFilter((value, index) => value % 2 === 0)
-console.log(newArray)
+// pushing a single element
+arr.myPush(10);
+console.log(arr); // [2, 3, 4, 5, 10]
+
+// pushing multiple elements
+arr.myPush(...arr1);
+console.log(arr); // [2, 3, 4, 5, 10, 6, 7, 8]
