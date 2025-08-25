@@ -4,14 +4,14 @@ if (!Array.prototype.myPop) {
             return undefined; // same as real pop
         }
         const lastIndex = this.length - 1;// 3
-        // const lastValue = this[lastIndex];
-        // this.length = lastIndex; // reduce array length (removes last element)
-        // return lastValue; // return removed element
+        const lastValue = this[lastIndex];
+        this.length = lastIndex; // reduce array length (removes last element)
+        return lastValue; // return removed element
     }
 }
 
 const arr = [2, 3, 4, 5, 6];
 const val = arr.myPop();
 
-// console.log("Removed:", val);  // 6
-// console.log("Updated Array:", arr);  // [2, 3, 4, 5]
+console.log("Removed:", val);  // 6
+console.log("Updated Array:", arr);  // [2, 3, 4, 5]
