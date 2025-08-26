@@ -1,17 +1,29 @@
-if (!Array.prototype.myPop) {
-    Array.prototype.myPop = function () {
-        if (this.length === 0) {
-            return undefined; // same as real pop
-        }
-        const lastIndex = this.length - 1;// 3
-        // const lastValue = this[lastIndex];
-        // this.length = lastIndex; // reduce array length (removes last element)
-        // return lastValue; // return removed element
-    }
-}
+// let globalVariable = ' i am global'
 
-const arr = [2, 3, 4, 5, 6];
-const val = arr.myPop();
+// function (){
+//   globalVariable = ' i am modify'
+//   let blockScopedVar = ' I am blocked-scoped'
+//   console.log(globalVariable)
+//   console.log(blockScopedVar)
+// }
+// console.log(globalVariable)
+// modifyGlobal()
 
-// console.log("Removed:", val);  // 6
-// console.log("Updated Array:", arr);  // [2, 3, 4, 5]
+// let person1={
+//   name:'bitu',
+//   greet:function(){
+//     console.log(`Hello ${this.name}`)
+//   }  
+// }
+// // person1.greet()
+
+// console.log('hi')
+// setTimeout(person1.greet.bind(person1),3*1000)
+// console.log('name')
+
+
+// console.log('hi');
+// setTimeout(()=>console.log('this is 2s'),2*1000)
+// Promise.resolve().then(()=>console.log('promise resolve'))
+// setTimeout(()=>console.log('this is 0s',0))
+// console.log('bye')
