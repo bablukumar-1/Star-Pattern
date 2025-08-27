@@ -1,4 +1,4 @@
-
+// -------------------  i have build own method like polyfill at()-------------------
 if (!Array.prototype.mtAt) {
   Array.prototype.myAt = function (index) {
     if(index < 0){

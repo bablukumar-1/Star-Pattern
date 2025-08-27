@@ -1,3 +1,5 @@
+// -------------------- I have build own polyfill method like join() method to myJoin()-------------
+
 // --------------- I have build own join() method like  a polyfill------------
 
 if (!Array.prototype.myJoin) {
