@@ -11,7 +11,7 @@ const task = [
 
 const pendingTask = task
   .filter((task) => !task.complete)
-  .sort((a,b)=>a.priority-b.priority)
+  .sort((a, b) => a.priority - b.priority)
 console.log(pendingTask)
 
 
@@ -25,11 +25,11 @@ const expense = [
   { description: 'Dinner', amount: 2000, category: 'Utility' },
 ]
 
-const expenseReport = expense.reduce((sum,item)=>{
-  sum[item.category]+=item.amount;
+const expenseReport = expense.reduce((sum, item) => {
+  sum[item.category] += item.amount;
   return sum
 
-},{Food:0,Utility:0})
+}, { Food: 0, Utility: 0 })
 console.log(expenseReport)
 
 
@@ -60,16 +60,16 @@ console.log(result)
 //-----------find the large number of this array-----------
 
 const arr = [12, 45, 67, 2, 89, 34];
-const newVal = arr.reduce((acc,curr)=>curr>acc ? curr:acc,0)
+const newVal = arr.reduce((acc, curr) => curr > acc ? curr : acc, 0)
 console.log(newVal)
 
 // ------------ find the square and cube of these array items-----------
-const num = [2,5,10]
+const num = [2, 5, 10]
 
-const newArray = num.map((val)=>{
-    const square = val*val;
-    const cube = val*val*val;
-    return {original:val,square:square,cube:cube}
+const newArray = num.map((val) => {
+  const square = val * val;
+  const cube = val * val * val;
+  return { original: val, square: square, cube: cube }
 })
 
 console.log(newArray)
@@ -78,16 +78,34 @@ console.log(newArray)
 
 
 let movieRating = [
-    {title: 'Movie A',rating:[4,5,6]},
-    {title: 'Movie B',rating:[5,6,6]},
-    {title: 'Movie c',rating:[4,7,8]},
+  { title: 'Movie A', rating: [4, 5, 6] },
+  { title: 'Movie B', rating: [5, 6, 6] },
+  { title: 'Movie c', rating: [4, 7, 8] },
 ]
 
-const averageMovieRating = movieRating.map((value)=>{
-       const total = value.rating.reduce((acc,curr)=>acc+curr,0)
-       const averageVal = (total/value.rating.length).toFixed(2)
-       return {title:value.title,rating:averageVal}
-    // return value.rating=averageVal
+const averageMovieRating = movieRating.map((value) => {
+  const total = value.rating.reduce((acc, curr) => acc + curr, 0)
+  const averageVal = (total / value.rating.length).toFixed(2)
+  return { title: value.title, rating: averageVal }
+  // return value.rating=averageVal
 })
 
-console.log(averageMovieRating)
+// console.log(averageMovieRating)
+
+//-------------Find Duplicate Element an array-------------
+
+function duplicateElement(arr) {
+  let result = []
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 1 + i; j < arr.length; j++) {
+      if (arr[i] == arr[j]) {
+        result.push(arr[i])
+      }
+    }
+  }
+  return result
+
+}
+// const array = [3, 2, 4, 5, 7, 3, 2]
+const array = ['bablu','bitu','ji','kumar','sarkar','bitu','bablu']
+console.log(duplicateElement(array))

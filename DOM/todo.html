@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo-Web-Application</title>
+  </head>
+  <style>
+    body {
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: black;
+    }
+    .container {
+      min-width: 70%;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    .container input {
+      text-align: center;
+      width: 100%;
+      font-size: 25px;
+      border-start-end-radius: 10px;
+      background-color: rgb(200, 222, 243);
+    }
+    .container button {
+      text-align: center;
+      width: 30%;
+      font-size: 25px;
+      background-color: lightslategray;
+      border-start-end-radius: 10px;
+    }
+    .container button:hover {
+      background-color: rgb(61, 71, 81);
+      color: white;
+    }
+    .containerTodo {
+      /* border: 2px solid white; */
+      /* margin: 10px; */
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+    #deleteAllItems {
+      /* color: white; */
+      border: 2px solid red;
+      padding: 4px;
+      font-size: 22px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <input type="text" id="input" placeholder="Add your task !" />
+      <button id="addTask">Add Task</button>
+    </div>
+    <button id="deleteAllItems">Delete All</button>
+    <div class="containerTodo" id="containerTodo"></div>
+  </body>
+
+  <script>
+    const input = document.getElementById("input");
+    const addTask = document.getElementById("addTask");
+    const containerTodo = document.getElementById("containerTodo");
+    // const deleteAllItems = document.getElementById("deleteAllItems");
+    const deleteAllItems = document.getElementById("deleteAllItems");
+    Object.assign(deleteAllItems.style, {
+      display: "none",
+    });
+    addTask.addEventListener("click", () => {
+      const date = new Date();
+      const hours = date.getHours() % 12 || 12;
+      const minutes = date.getMinutes().toString().padStart(2, "0");
+      const second = date.getSeconds().toString().padStart(2, "0");
+      const ampm = date.getHours() >= 12 ? "PM" : "AM";
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      const time = `Current Time : ${hours}:${minutes}:${second}${ampm}`;
+      const timeLine = document.createElement("p");
+      timeLine.innerText = time;
+      Object.assign(timeLine.style, {
+        color: "red",
+        fontSize: "10px",
+      });
+
+      const div = document.createElement("div");
+      const p = document.createElement("p");
+      const buttonHandle = document.createElement("div");
+      const deletes = document.createElement("button");
+      const edit = document.createElement("button");
+      let inputValue =
+        input.value === "" ? alert("Please Enter your todo") : input.value;
+      div.appendChild(p);
+      p.innerText = inputValue.toUpperCase();
+      div.appendChild(timeLine);
+      deletes.innerText = "Delete";
+      buttonHandle.appendChild(deletes);
+      edit.innerText = "Edit";
+      buttonHandle.appendChild(edit);
+      div.appendChild(buttonHandle);
+      input.value = "";
+      containerTodo.appendChild(div);
+      Object.assign(p.style, {
+        color: "white",
+        //  width:'40%'
+      });
+      Object.assign(deletes.style, {
+        borderRadius: "4px",
+        backgroundColor: "red",
+        color: "white",
+      });
+
+      Object.assign(edit.style, {
+        borderRadius: "4px",
+        backgroundColor: "yellow",
+        color: "black",
+      });
+      Object.assign(buttonHandle.style, {
+        display: "flex",
+        justifyContent: "space-around",
+        textAlign: "center",
+      });
+      Object.assign(div.style, {
+        with: "200px",
+        margin: "10px",
+        textAlign: "center",
+        borderRadius: "5px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        padding: "10px",
+        backgroundColor: "rgb(126, 47, 47)",
+      });
+
+      // console.log(div.length)
+      // delete single items--------------------------
+      deletes.addEventListener("click", () => {
+        alert("are you agree delete todo ?");
+        div.remove();
+      });
+      //delete all items-----------------------
+      deleteAllItems.addEventListener("click", () => {
+        alert("are you agree delete all todo ?");
+        const popup = document.createElement("div");
+        console.log(popup);
+        div.remove();
+        deleteAllItems.remove();
+      });
+      Object.assign(deleteAllItems.style, {
+        display: "block",
+      });
+
+      // Edit selecting items--------------------------
+      edit.addEventListener("click", () => {
+        // Replace the paragraph with an input box
+        const newInput = document.createElement("input");
+        newInput.type = "text";
+        newInput.value = p.innerText; // prefill with current task
+        newInput.style.backgroundColor = "lightyellow";
+        newInput.style.color = "black";
+        // Replace p with input
+        div.replaceChild(newInput, p);
+
+        // Change edit button to 'Save'
+        edit.innerText = "Save";
+
+        // When clicked again, save the changes
+        edit.addEventListener(
+          "click",
+          () => {
+            const date = new Date();
+            const hours = date.getHours() % 12 || 12;
+            const minutes = date.getMinutes().toString().padStart(2, "0");
+            const second = date.getSeconds().toString().padStart(2, "0");
+            const ampm = date.getHours() >= 12 ? "PM" : "AM";
+            const options = {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            };
+            const time = `Update Time${hours}:${minutes}:${second}${ampm}`;
+            const updateTime = document.createElement("p");
+            updateTime.innerText = time;
+            Object.assign(updateTime.style, {
+              color: "green",
+              fontSize: "10px",
+            });
+            div.appendChild(updateTime);
+            p.innerText = newInput.value; // update text
+
+            div.replaceChild(p, newInput); // replace input back with text
+
+            edit.innerText = "Edit"; // reset button name
+            Object.assign(edit.style, {
+              textTransform: "upperCase",
+            });
+          },
+          { once: true }
+        ); // ensure it runs only once per edit
+      });
+    });
+  </script>
+</html>

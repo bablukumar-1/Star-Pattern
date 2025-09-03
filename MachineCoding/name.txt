@@ -6,8 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome to DOM !</h1>
-    <button id="theme-button">Dark-Mode</button>
+    
 </body>
-<script src="./DOM/dom.js"></script>
 </html>

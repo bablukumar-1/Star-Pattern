@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Font Awesome Icon Library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      #startId {
+        background-color: black;
+        text-align: center;
+      }
+      .fa {
+        font-size: 40px;
+        margin: 5px;
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <span class="fa fa-star" id="start"></span> -->
+    <div id="startId"></div>
+    <button id="button">submit</button>
+    <h1 id="result"></h1>
+  </body>
+  <script>
+    const startId = document.getElementById("startId");
+    const result = document.getElementById("result");
+    const button = document.getElementById("button");
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      const star = document.createElement("span");
+      star.classList.add("fa", "fa-star");
+      startId.appendChild(star);
+      stars.push(star);
+
+      star.addEventListener("click", () => {
+        // Reset all stars to default
+        stars.forEach((s) => (s.style.color = "yellow"));
+
+        // Highlight stars up to the clicked one
+        for (let j = 0; j <= i; j++) {
+          stars[j].style.color = "orange";
+        }
+    
+        button.addEventListener('click',()=>{
+
+            result.innerText=`You rated: ${i + 1} star(s) ratings`
+        })
+
+        // console.log(`You rated: ${i + 1} star(s)`);
+      });
+    }
+  </script>
+</html>

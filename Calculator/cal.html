@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator</title>
+  </head>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      border: 2px solid white;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border: 2px solid red;
+      padding: 10px;
+    }
+    .btn {
+      display: flex;
+      gap: 20px;
+    }
+    .btn div {
+      border: 2px solid green;
+      width: 40px;
+      height: 30px;
+      text-align: center;
+      padding: 10px;
+      font-size: 22px;
+      border-radius: 10px;
+      background-color: rgb(109, 255, 11);
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn div:hover{
+        background-color: red;
+        color: white;
+    }
+    .display {
+      border: 2px solid red;
+      width: 335px;
+      height: 50px;
+    }
+    .display input {
+      height: 45px;
+      width: 330px;
+      outline: none;
+      border: none;
+      font-size: 22px;
+      text-align: end;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="display">
+        <input type="text" id="input" placeholder="Enter number..." />
+      </div>
+      <div class="buttons">
+        <div class="btn">
+          <div id="ac">AC</div>
+          <div onclick="input.value+='%'">%</div>
+          <div id="CLR">CLR</div>
+          <div onclick="input.value+='÷'">÷</div>
+        </div>
+        <div class="btn">
+          <div onclick="input.value+='7'">7</div>
+          <div onclick="input.value+='8'">8</div>
+          <div onclick="input.value+='9'">9</div>
+          <div onclick="input.value+='×'">×</div>
+        </div>
+        <div class="btn">
+          <div onclick="input.value+='4'">4</div>
+          <div onclick="input.value+='5'">5</div>
+          <div onclick="input.value+='6'">6</div>
+          <div onclick="input.value+='-'">-</div>
+        </div>
+        <div class="btn">
+          <div onclick="input.value+='1'">1</div>
+          <div onclick="input.value+='2'">2</div>
+          <div onclick="input.value+='3'">3</div>
+          <div   id="plus">+</div>
+        </div>
+        <div class="btn">
+          <div onclick="input.value+='00'">00</div>
+          <div onclick="input.value+='0'">0</div>
+          <div onclick="input.value+='.'">.</div>
+          <div  id="equal">=</div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="calc.js"></script>
+</html>
