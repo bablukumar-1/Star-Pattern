@@ -45,22 +45,36 @@
 //----------------- My reduce polyfill function --------
 
 if (!Array.prototype.myReduce) {
-    Array.prototype.myReduce = function (callback) {
+    Array.prototype.myReduce = function (callback, initialValue = undefined) {
         if (typeof callback !== 'function') {
             throw new TypeError(callback, ' is not a function !')
         }
-        let acc = this[0]
-        for (let i = 1; i < this.length; i++) {
+        if (!initialValue) {
+            let acc = this[0]
+            for (let i = 1; i < this.length; i++) {
+                acc = callback(acc, this[i])
+            }
+            return acc
+        }
+        let acc = initialValue
+        for (let i = 0; i < this.length; i++) {
             acc = callback(acc, this[i])
         }
+
+
         return acc
     }
 }
 
 let arr = [1, 2, 3, 4, 5]
 
-const newValue = arr.myReduce((acc, curr) => {
-    console.log(acc, curr)
-    return (acc + curr)
-})
+// const newValue = arr.myReduce((acc, curr) => {
+//     console.log(acc, curr)
+//     return (acc + curr)
+// })
+
+
+const newValue = arr.myReduce((acc, curr) => (acc + curr),10)
+
+
 console.log(newValue)
