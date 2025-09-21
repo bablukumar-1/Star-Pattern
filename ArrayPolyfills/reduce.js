@@ -45,12 +45,17 @@
 //----------------- My reduce polyfill function --------
 
 if (!Array.prototype.myReduce) {
-    Array.prototype.myReduce = function (callback) {
+    Array.prototype.myReduce = function (callback, initialValue = undefined) {
         if (typeof callback !== 'function') {
-            throw new TypeError(callback, ' is not a function !')
+            throw new TypeError(callback + ' is not a function !')
         }
-        let acc = this[0]
-        for (let i = 1; i < this.length; i++) {
+        if (this.length === 0 && initialValue === undefined) {
+            throw new TypeError('Reduce of empty array with no initial value');
+        }
+        let acc = initialValue ? initialValue : this[0]
+        let startIndex = initialValue ? 0 : 1
+
+        for (let i = startIndex; i < this.length; i++) {
             acc = callback(acc, this[i])
         }
         return acc
@@ -59,8 +64,13 @@ if (!Array.prototype.myReduce) {
 
 let arr = [1, 2, 3, 4, 5]
 
-const newValue = arr.myReduce((acc, curr) => {
-    console.log(acc, curr)
-    return (acc + curr)
-})
+// const newValue = arr.myReduce((acc, curr) => {
+//     console.log(acc, curr)`
+//     return (acc + curr)
+// })
+
+
+const newValue = arr.myReduce((acc, curr) => (acc + curr))
+
+
 console.log(newValue)

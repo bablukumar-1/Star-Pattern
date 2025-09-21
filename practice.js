@@ -1,20 +1,15 @@
 
 
-const fetchedData =  () => {
-    try {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then((response) => {
-               response.json().then((result) => {
-                    result.forEach((element, index) => {
-                        if (index < 5) {
-                           console.log(element.title)
-                        }
-                    });
-                })
-            })
-    } catch (error) {
-        console.log('error', error)
+function increment (){
+    let count = 0;
+    return function(){
+        count++
+        return count;
     }
 }
-
-fetchedData()
+const x=increment()
+console.log(x())
+console.log(x()) 
+console.log(x())
+console.log(x())
+console.log(x())
