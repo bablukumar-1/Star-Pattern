@@ -7,7 +7,7 @@ dotenv.config()
 import userRoutes from './routes/user.routes.js'
 const app = express()
 const PORT = process.env.PORT || 4000
-// middleware
+// middleware code
 app.use(cors({
     origin: process.env.BASE_URL,
     credentials: true,
